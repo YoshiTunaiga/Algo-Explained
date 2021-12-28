@@ -8,7 +8,7 @@ Children nodes can either be BinaryTree nodes themselves or None/null.
 
 ## Sample Input
 
-```
+```javascript
 tree =    1
         /   \
       2      3
@@ -38,7 +38,7 @@ tree =    1
 
 ## Sample Output
 
-```
+```javascript
 16  // Total depth
 
 // The depth of the node with value 2 is 1.
@@ -55,7 +55,7 @@ Summing all of these depths yields 16.
 
 ## Solution #1
 
-```
+```javascript
 function nodeDepths(root) {
   let memo = []; // Establish a memoization;
   let totalDepth = 0; // Declare a total to 0;

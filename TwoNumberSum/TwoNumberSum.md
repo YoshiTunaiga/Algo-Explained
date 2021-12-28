@@ -8,31 +8,29 @@ You can assume that there will be at most one pair of numbers summing up to the 
 
 ## Sample Input
 
-```
-array = [3, 5, -4, 8, 11, 1, -1, 6]
-targetSum = 10
+```javascript
+array = [3, 5, -4, 8, 11, 1, -1, 6];
+targetSum = 10;
 ```
 
 ## Sample Output
 
-```
-[-1, 11]
+```javascript
+[-1, 11];
 ```
 
 ## SOLUTION #1
 
-```
+```javascript
 function twoNumberSum(array, targetSum) {
   let result = []; // declaring a result array of the numbers that will be returned.
 
   // [i = 0, j = i + 1]
   for (let i = 0; i < array.length - 1; i++) {
     for (let j = i + 1; j < array.length; j++) {
-
       // If the pair of integers add up to the targetSum
       if (array[i] + array[j] === targetSum) {
-
-      //Then will push both integers to the result array.
+        //Then will push both integers to the result array.
         result.push(array[i]);
         result.push(array[j]);
       }

@@ -8,7 +8,7 @@ If you're unfamiliar with Depth-first Search, we recommend watching the Conceptu
 
 ## Sample Input
 
-```
+```javascript
 graph = A
       / |  \
      B  C   D
@@ -20,13 +20,13 @@ graph = A
 
 ## Sample Output
 
-```
-["A", "B", "E", "F", "I", "J", "C", "D", "G", "K", "H"]
+```javascript
+["A", "B", "E", "F", "I", "J", "C", "D", "G", "K", "H"];
 ```
 
 ## Solution
 
-```
+```javascript
   depthFirstSearch(array) {
     let node = this;
 

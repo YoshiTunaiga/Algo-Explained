@@ -4,19 +4,19 @@ Write a function that takes in a non-empty array of integers that are sorted in 
 
 ## Sample Input
 
-```
-array = [1, 2, 3, 4, 6, 8, 9]
+```javascript
+array = [1, 2, 3, 4, 6, 8, 9];
 ```
 
 ## Sample Output
 
-```
-[1, 4, 9, 25, 36, 64, 81]
+```javascript
+[1, 4, 9, 25, 36, 64, 81];
 ```
 
 ## Solition #1
 
-```
+```javascript
 function sortedSquaredArray(array) {
   let result = []; // declaring a new empty array that will hold the result
 

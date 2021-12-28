@@ -4,30 +4,28 @@ Write a function that takes in an array of integers and returns a sorted version
 
 ## Sample Input
 
-```
-array = [8, 5, 2, 9, 5, 6, 3]
+```javascript
+array = [8, 5, 2, 9, 5, 6, 3];
 ```
 
 ## Sample Output
 
-```
-[2, 3, 5, 5, 6, 8, 9]
+```javascript
+[2, 3, 5, 5, 6, 8, 9];
 ```
 
 ## Solution #1
 
-```
+```javascript
 function bubbleSort(array) {
   // Loop through the array as long as the length of it;
   for (let i = 0; i < array.length; i++) {
-
     let swap = false; // Declare a Boolean to keep track of the swapped integers;
 
     // Loop through the array as pointers
     for (let j = 0; j < array.length; j++) {
       // If the 1st integer it's greater than the next integer
       if (array[j] > array[j + 1]) {
-
         // hold 1st integer to a temporary variable;
         let temp = array[j];
 

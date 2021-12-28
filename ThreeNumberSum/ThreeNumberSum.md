@@ -7,20 +7,24 @@ If no three numbers sum up to the target sum, the function should return an empt
 
 ## Sample Input
 
-```
-array = [12, 3, 1, 2, -6, 5, -8, 6]
-targetSum = 0
+```javascript
+array = [12, 3, 1, 2, -6, 5, -8, 6];
+targetSum = 0;
 ```
 
 ## Sample Output
 
-```
-[[-8, 2, 6], [-8, 3, 5], [-6, 1, 5]]
+```javascript
+[
+  [-8, 2, 6],
+  [-8, 3, 5],
+  [-6, 1, 5],
+];
 ```
 
 ## Solution #1
 
-```
+```javascript
 function threeNumberSum(array, targetSum) {
   let result = []; // Declare an empty array;
 
@@ -38,7 +42,6 @@ function threeNumberSum(array, targetSum) {
 
       // If currentSum is equal to the targetSum
       if (currentSum === targetSum) {
-
         // Then, let's push the root, left and right integers
         result.push([array[i], array[left], array[right]]);
         // Move pointers
@@ -46,9 +49,9 @@ function threeNumberSum(array, targetSum) {
         right--;
       } else if (currentSum < targetSum) left++;
       else if (currentSum > targetSum) right--;
-    };
-  };
+    }
+  }
 
   return result;
-};
+}
 ```

@@ -5,19 +5,19 @@ A palindrome is defined as a string that's written the same forward and backward
 
 ## Sample Input
 
-```
-string = "abcdcba
+```javascript
+string = "abcdcba";
 ```
 
 ## Sample Output
 
-```
-true // As long as its the same forward and backward
+```javascript
+true; // As long as its the same forward and backward
 ```
 
 ## Solution #1
 
-```
+```javascript
 function isPalindrome(str) {
   // In case there's any capital letter, its best to check full lowercase or uppercase
   str = str.toLowerCase();

@@ -9,18 +9,18 @@ Important note: the Fibonacci sequence is often defined with its first two numbe
 
 ## Sample Input
 
-```
-n = 6
+```javascript
+n = 6;
 ```
 
 ## Sample Output
 
-```
-5 // 0, 1, 1, 2, 3, 5
+```javascript
+5; // 0, 1, 1, 2, 3, 5
 ```
 
 ## Solution #1
 
-```
+```javascript
 
 ```
