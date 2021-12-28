@@ -6,27 +6,26 @@ Note that letters should "wrap" around the alphabet; in other words, the letter 
 
 ## Sample Input
 
-```
-string = "xyz"
-key = 2
+```javascript
+string = "xyz";
+key = 2;
 ```
 
 ## Sample Output
 
-```
-"zab"
+```javascript
+"zab";
 ```
 
 ## Solution #1
 
-```
+```javascript
 function caesarCipherEncryptor(string, key) {
-
   let abc = "abcdefghijklmnopqrstuvwxyz"; // declared a variable with the alphabet for reference.
   let cypherResult = "";
 
-
-  for (let i = 0; i < string.length; i++) { // Loop through the string for every character
+  for (let i = 0; i < string.length; i++) {
+    // Loop through the string for every character
     let char = string[i];
 
     // Check the character's index against the abc and add the key
