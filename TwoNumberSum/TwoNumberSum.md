@@ -19,7 +19,7 @@ targetSum = 10;
 [-1, 11];
 ```
 
-## SOLUTION #1
+## SOLUTION #1 - RETURNING THE INTEGERS
 
 ```javascript
 function twoNumberSum(array, targetSum) {
@@ -40,6 +40,34 @@ function twoNumberSum(array, targetSum) {
   //Then return result.
   return result;
 }
+```
 
-twoNumberSum();
+## SOLUTION #2 - RETURNING INDICES
+
+Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
+
+You may assume that each input would have exactly one solution, and you may not use the same element twice.
+
+You can return the answer in any order.
+
+```js
+const twoSum = function (nums, target) {
+  let result = [];
+
+  // Nested loop for adding (2) integers
+  for (let i = 0; i < nums.length - 1; i++) {
+    for (let j = i + 1; j < nums.length; j++) {
+      // Sum both integers
+      let sum = nums[i] + nums[j];
+      if (sum === target) {
+        // If the sum is equal to the target
+        // Push first integer index, then push the second integer index.
+        result.push(i);
+        result.push(j);
+      }
+    }
+  }
+  // return result array with the indeces, if any.
+  return result;
+};
 ```
