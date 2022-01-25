@@ -120,16 +120,20 @@ For a function to have different not-nested for-loops, each for loop counts as O
 
 ```js
 function countUpAndDown(n) {
-  for(let i = 0; i < n; i++) {   // O(n)
-    console.log(i)
+  for (let i = 0; i < n; i++) {
+    // O(n)
+    console.log(i);
   }
 
-  for (let j = n -1; j >= 0; j--) {    // O(n)
+  for (let j = n - 1; j >= 0; j--) {
+    // O(n)
     console.log(j);
   }
 }
+```
 
-Making this number of operations eventually bounded by a multiple of ***n*** (say, 10n). But in this example is O(2n) => Simplify as O(n)
+```
+Making this number of operations eventually bounded by a multiple of ***n*** (say, 10n). But in this example is O(2n) => Simplify as O(n).
 ```
 
 For a function with nested for loops, this is no longer O(n).
@@ -141,9 +145,31 @@ function printAllPairs(n) {
       console.log(i, j)
    }
   }
-
-
 }
 ```
 
+```
 For This nested loop O(n) operation is inside of an O(n) operation making this O(n \* n) => O($n^2$). This means that as **_n_** grows, the run time roughly grows at the **rate of $n^2$**.
+```
+
+## Rules of Thumbs for Simplifying Big O
+
+- Constants Don't Matter:
+
+  - O(2n) => O(n)
+  - O(500) => O(1)
+  - O(13$n^2$) => O($n^2$)
+
+- Smaller Terms Don't Matter:
+
+  - O(n + 10) => O(n)
+  - O(1000n + 50) => O(n)
+  - O($n^2$ + 5n + 8) => O($n^2$)
+
+These rules don't **ALWAYS** work, but it's a good starting point.
+
+- Big O Shorthands:
+  - Arithmetic operations are constant.
+  - Variable assignment is constant.
+  - Accessing elements in an array (by index) or object(by key)is constant.
+  - In a loop, the complexity is the length of the loop times the complexity of whatever happens inside of this loop.
