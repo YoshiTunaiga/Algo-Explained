@@ -106,3 +106,44 @@ function addUpTo(n) {
 
 - Depending on how we counting, the number of operations can be as low as 2n or as high as 5n + 2.
 - As 'n' grows, the number of operations grows proportionally with n.
+
+## Big O Definition
+
+We say that an algorithm is **O(f(n))** if the number of simple operations the computer has to do is eventually less than a constant times **f(n)**, as **n** increases.
+
+- **f(n)** could be linear **(f(n)= n)**
+- **f(n)** could be quadratic **(f(n)= $n^2$)**
+- **f(n)** could be linear **(f(n)= 1)**
+- **f(n)** could be something entirely different!
+
+For a function to have different not-nested for-loops, each for loop counts as O(n).
+
+```js
+function countUpAndDown(n) {
+  for(let i = 0; i < n; i++) {   // O(n)
+    console.log(i)
+  }
+
+  for (let j = n -1; j >= 0; j--) {    // O(n)
+    console.log(j);
+  }
+}
+
+Making this number of operations eventually bounded by a multiple of ***n*** (say, 10n). But in this example is O(2n) => Simplify as O(n)
+```
+
+For a function with nested for loops, this is no longer O(n).
+
+```js
+function printAllPairs(n) {
+  for(let i = 0; i < n; i++) {   // O(n)
+    for (let j = 0; j < n>; j++) {    // O(n)
+      console.log(i, j)
+   }
+  }
+
+
+}
+```
+
+For This nested loop O(n) operation is inside of an O(n) operation making this O(n \* n) => O($n^2$). This means that as **_n_** grows, the run time roughly grows at the **rate of $n^2$**.
