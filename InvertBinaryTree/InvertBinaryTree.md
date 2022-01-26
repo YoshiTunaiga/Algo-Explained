@@ -1,7 +1,5 @@
 # Invert Binary Tree
 
-Given the **root** of a binary tree, invert the tree, and return _*its root*_.
-
 Write a function that takes in a Binary Tree and inverts it. In other words, the function should swap every left node in the tree for its corresponding right node.
 
 Each **BinaryTree** node has an integer **value**, **left** child node, and a **right** child node. Children nodes can either be **BinaryTree** nodes themselves or **None**/ **null**.
@@ -52,4 +50,33 @@ function invertBinaryTree(tree) {
 
   return tree; // return tree;
 }
+```
+
+## Solution #2
+
+Leetcode => Given the **root** of a binary tree, invert the tree, and return _*its root*_.
+
+```js
+const invertTree = function (root) {
+  let queue = [root]; // Queue the root...
+
+  // while there's something on queue..
+  while (queue.length) {
+    // get currentNode...
+    let currentNode = queue.shift();
+
+    if (currentNode) {
+      // If currentNode is not null, SWAP..
+      let temp = currentNode.left;
+      currentNode.left = currentNode.right;
+      currentNode.right = temp;
+
+      // if current node has left or right, push it to queue..
+      if (currentNode.left) queue.push(currentNode.left);
+      if (currentNode.right) queue.push(currentNode.right);
+    }
+  }
+  // return root
+  return root;
+};
 ```
