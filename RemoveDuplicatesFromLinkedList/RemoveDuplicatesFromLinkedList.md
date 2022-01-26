@@ -1,6 +1,6 @@
 # Remove Duplicates From Linked List
 
-You're given the head of a Sungly Linked List whose nodes are in sorted order with respect to their values. Write a function that returns a modified version of the Linked List that doesn't contain any nodes with duplicate values. The Linked List should be modified in place (i.e., you shouldn't create a brand new list), and the modified Linked List should still have its nodes sorted with respect to their values.
+You're given the head of a Singly Linked List whose nodes are in sorted order with respect to their values. Write a function that returns a modified version of the Linked List that doesn't contain any nodes with duplicate values. The Linked List should be modified in place (i.e., you shouldn't create a brand new list), and the modified Linked List should still have its nodes sorted with respect to their values.
 
 Each **LinkedList** node has an integer **value** as well as a **next** node pointing to the next node in the list or to **None** / **null** if it's the tail of the list.
 
@@ -69,7 +69,25 @@ function removeDuplicatesFromLinkedList(linkedList) {
   // return linkedList;
   return linkedList;
 }
-
-
-Time complexity is O(n) | Space complexity is O(1)
 ```
+
+Time complexity is O($n^2$) | Space complexity is O(1)
+
+## Solution #2
+
+**LeetCode** => Given the head of a sorted linked list, delete all duplicates such that each element appears only once. Return the linked list sorted as well.
+
+```js
+const removeDuplicatesFromSortedList = function (head) {
+  let list = head;
+
+  // while there is a list && a list's next
+  while (list && list.next) {
+    if (list.val === list.next.val) list.next = list.next.next;
+    else list = list.next; //within the else, if the val is unique then go to next.
+  }
+  return head;
+};
+```
+
+Time complexity is O(n) | Space Complexity is O(1);
