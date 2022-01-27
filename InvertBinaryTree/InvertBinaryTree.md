@@ -80,3 +80,35 @@ const invertTree = function (root) {
   return root;
 };
 ```
+
+## Solution #3
+
+Leetcode => Given the **root** of a binary tree, invert the tree, and return _*its root*_.
+
+```js
+const invertTree = function (root) {
+  let queue = [root];
+
+  while (queue.length) {
+    let currentNode = queue.shift();
+
+    if (currentNode) {
+      // Swap...
+      swapNodes(currentNode); //callback fn on currentNode
+
+      // push them to the queue.
+      if (currentNode.left) queue.push(currentNode.left);
+      if (currentNode.right) queue.push(currentNode.right);
+    }
+  }
+  return root;
+};
+
+// Helper function for swap..
+const swapNodes = (currentNode) => {
+  let temp = currentNode.left;
+  currentNode.left = currentNode.right;
+  currentNode.right = temp;
+  return currentNode;
+};
+```
