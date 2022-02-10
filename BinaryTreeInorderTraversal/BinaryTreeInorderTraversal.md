@@ -7,11 +7,11 @@ Given the **root** of a binary tree, return the **_inorder traversal of its node
 ## Sample Input
 
 ```js
-tree =            1
-                    \
-                     2
-                   /
-                  3
+tree =   1
+          \
+           2
+          /
+         3
 
 root = [1, null, 2, 3]
 ```
