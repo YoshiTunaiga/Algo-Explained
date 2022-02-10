@@ -40,3 +40,32 @@ function isPalindrome(str) {
   return otherLetters;
 }
 ```
+
+## Solution #2
+
+**Leetcode** => A phrase is a **palindrome** if, after converting all uppercase letters into lowercase letters and removing all non-alphanumeric characters, it reads the same forward and backward. Alphanumeric characters include letters and numbers.
+
+Given a string _*s*_, return _*true*_ if it is a **_palindrome_**, or _*false*_ otherwise.
+
+```js
+const isPalindrome = function (str) {
+  // remove all non-alphanumeric characters from the string
+  const regex = /[^A-Za-z0-9]/g;
+  str = str.replace(regex, "").toLowerCase();
+
+  if (str.length <= 1) return true; // if string's length is less or equal to 1, return true;
+  if (str.length === 2) return str[0] === str[str.length - 1]; // if string's length is equal to 2, return true if pair value is equal.
+
+  // Get first and last character to compare from outside in;
+  let firstChar = str[0];
+  let lastChar = str[str.length - 1];
+
+  // if first and last characters are not equal, return false;
+  if (firstChar !== lastChar) return false;
+
+  // call back the function sending string cut 1 index less from front and end.
+  let otherLetters = isPalindrome(str.slice(1, -1));
+
+  return otherLetters;
+};
+```
