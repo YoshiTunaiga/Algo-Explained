@@ -7,3 +7,5 @@ const reverseString = (str) => {
     [str[i], str[j]] = [str[j], str[i]];
   }
 };
+
+reverseString(str);
