@@ -20,4 +20,4 @@ const preorderTraversal = function (root, array = []) {
   return array;
 };
 
-preorderTraversal(root, (array = []));
+preorderTraversal(root);
