@@ -20,10 +20,24 @@ let array = [1, 2, 3];
 
 ## Solution #1
 
+HackerRank:
+
 ```js
 function simpleArraySum(array) {
   let sum = 0;
   array.forEach((num) => (sum += num));
+  return sum;
+}
+```
+
+## Solution #2
+
+HackerRank:
+
+```js
+function simpleArraySum(array) {
+  let sum = 0;
+  for (let i = 0; i < ar.length; i++) sum += ar[i];
   return sum;
 }
 ```
