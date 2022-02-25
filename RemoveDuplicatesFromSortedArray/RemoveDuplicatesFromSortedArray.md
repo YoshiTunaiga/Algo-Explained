@@ -48,49 +48,81 @@ It does not matter what you leave beyond the returned k (hence they are undersco
 
 ```js
 const removeDuplicates = function (array) {
+  // Loop thru the array...
   for (let i = 0; i < array.length; i++) {
+    // if the nextNum is not the last or undefined && both nums are equal
     if (i + 1 < array.length && array[i] === array[i + 1]) {
+      // remove the currentNum
       array.splice(i, 1);
+      // move i a step back
       i--;
     }
   }
+  //return array's length
   return array.length;
 };
+```
+
+```
+This will make Time Complexity O(n^2) and Space Complexity O(1)
 ```
 
 ## Solution #2
 
 ```js
 const removeDuplicates = function (array) {
+  // if array's length is falsey return 0;
   if (!array.length) return 0;
-  let i = 0;
+
+  let i = 0; // Pointer for currentNum
+
+  // Loop thru the array for the nextNum
   for (let j = 1; j < array.length; j++) {
+    // if currentNum is not equal to the nextNum
     if (array[i] !== array[j]) {
+      // Let currentNum move 1 position forward
       i++;
+      // swap the currentNum with next num
       array[i] = array[j];
     }
   }
+  // return the index + 1 => k
   return i + 1;
 };
+```
+
+```
+This will make Time Complexity O(n) without altering the array or create side effects and Space Complexity O(1)
 ```
 
 ## Solution #3
 
 ```js
 const removeDuplicates = function (array) {
+  // if array's length is falsey return 0
   if (!array.length) return 0;
-  let i = 0;
-  let j = 1;
 
+  // Define pointers for currentNum and nextNum
+  let i = 0,
+    j = 1;
+
+  // while j pointer is less than the array's length
   while (j < array.length) {
+    // if currentNum is not equal to nextNum
     if (array[i] !== array[j]) {
+      // Let currentNum move 1 position forward
       i++;
+      // swap the currentNum with next num
       array[i] = array[j];
     }
+    // Let nextNum move 1 position forward
     j++;
   }
+  // return the index + 1 => k
   return i + 1;
 };
 ```
 
-Time O(n^2) for splice and Time O(n) for pointers
+```
+This will make Time Complexity O(n) without altering the array or create side effects and Space Complexity O(1)
+```
