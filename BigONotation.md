@@ -173,3 +173,42 @@ These rules don't **ALWAYS** work, but it's a good starting point.
   - Variable assignment is constant.
   - Accessing elements in an array (by index) or object(by key)is constant.
   - In a loop, the complexity is the length of the loop times the complexity of whatever happens inside of this loop.
+
+## Logarithm Complexity
+
+Most common complexities: O(1), O(n), O($n^2$).
+Sometimes big O expressions involve more complex mathematical expressions.
+One that appears often is the logarithm.
+
+- **Rule of thumb:** The logarithm of a number roughly measures the number of times you can divide that number by 2 **before you get a value that's less than or equal to one.**
+
+  ```
+  8 /2 => 4 /2 => 2 /2 => 1
+  (3) times divided by (2) to make it equal to (1)
+  log(8) = 3
+
+  25 /2 => 12.5 /2 => 6.25 /2 => 3.125 /2 => 1.5625 /2 => 0.78125
+  (4.64) times divided by (2) to make it less than or equal to (1)
+  log(25) = 4.64
+  ```
+
+  From better time complexity, see below sorted time complexity starting by the most efficient:
+
+  O(1) ||
+  O(log n) ||
+  O(n) ||
+  O(n log n) ||
+  O($n^2$)
+
+## When to Care
+
+- Certain **_searching_** algorithms have logarithmic time complexity.
+- Efficient **_sorting_** algorithms involve logarithms.
+- **_Recursion_** sometimes involves logarithmic space complexity.
+
+# NOTES
+
+- To analyze the performance of an algorithm, we use Big O Notation.
+- Big O Notation can give us a high level understanding of the time or space complexity of an algorithm.
+- Big O Notation doesn't care about precision, only about general trends (linear? quadratic? constant?).
+- The time or space complexity (as measured by Big O) depends only on the algorithm, not the hardware used to run the algorithm.
