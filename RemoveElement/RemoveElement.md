@@ -66,3 +66,26 @@ const removeElement = function (nums, val) {
   return k;
 };
 ```
+
+## Solution #2
+
+```js
+const removeElement = function (nums, val) {
+  if (nums.length < 1) return 0;
+  let i = 0; // pointer
+
+  // Loop through nums array
+  for (let j = 0; j < nums.length; j++) {
+    // if the val is not equal to the current num
+    if (nums[j] !== val) {
+      // Swap
+      let temp = nums[i];
+      nums[i] = nums[j];
+      nums[j] = temp;
+      i++;
+    }
+  }
+  // return i as the count;
+  return i;
+};
+```
