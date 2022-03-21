@@ -96,13 +96,29 @@ Now let's use strings instead of arrays.
 An Anagram is a word or phrase formed by rearranging the letters of a different word or phrase, typically using all the original letters exactly once.``
 
 ```js
-function same(first, second){
+function same(first, second) {
   // if they not the same length, return false.
-  if(first.length !-- second.length) return false;
+  if (first.length !== second.length) return false;
 
   const lookUp = {};
 
+  for (let i = 0; i < first.length; i++) {
+    let letter = first[i];
+    // if the letter exists, increment, otherwise set to 1
+    lookUp[letter] ? (lookUp[letter] += 1) : (lookUp[letter] = 1);
+  }
 
+  for (let i = 0; i < second.length; i++) {
+    let letter = second[i];
+
+    // can't find letter or letter is zero then it's not an anagram
+    if (!lookUp[letter]) return false;
+    else lookUp[letter] -= 1;
+  }
   return true;
 }
+
+// Time Complexity = O(n)
 ```
+
+Everytime we have multiple pieces of data and we have to compare them, it's good to use frequencyCounter Patterns.
