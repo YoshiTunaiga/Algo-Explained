@@ -242,3 +242,84 @@ function countUniqueValues(arr) {
 ```
 
 This type of pattern can be use in problems like Removing Duplicates from Sorted Array;
+
+# Sliding Window
+
+This pattern involves creating a window which can either be an array or number from one position to another.
+Depending on a certain condition, the window either increases or closes (and a new window is created);
+
+Very useful for keeping track of a subset of data in an array/string etc.
+
+LongestSequenceOfUniqueCharacters?
+"hellothere" => lother
+
+`Example: Write a function called maxSubarraySum which accepts an array of integers and a number called **n**. The function should calculate the maximum sum of **n** consecutive elements in the array.``
+
+```js
+Input: array = [1, 2, 5, 2, 8, 1, 5] && n = 2;
+
+Output: // 10
+
+EdgeCase: // If [] is empty, return null;
+
+// Naive Solution
+function maxSubarraySum(array, n) {
+  if(num > arr.length) return null; // Edge case when array is empty
+
+  let max = -Infinity; // TO COUNT FOR NEGATIVE INTEGERS
+
+  for (let i = 0; i < array.length - num + 1; i ++) {
+    temp = 0;
+
+//  gets the (2) consecutive integers at each (i) iteration
+    for (let j = 0; j < num; j++) {
+      // sums it and stores it this temporary variable;
+      temp += arr[i + j];
+    }
+
+    // if the temp variable is greater than the max value;
+    if(temp > max) {
+      // make max value, temp's valus
+      max = temp;
+    }
+  }
+
+  return max;
+}
+
+
+// Time Complexity = O(N^2)
+// This is very innefficient when it comes to long arrays.
+```
+
+## Refactored
+
+Now using **SLIDING WINDOW**:
+
+```js
+function maxSubarraySum(array, n) {
+  if (num > arr.length) return null; // Edge case when array is empty
+
+  let maxSum = 0,
+    tempSum = 0;
+
+  // Creating the first sum with the first (3) digits;
+  for (let i = 0; i < n; i++) {
+    maxSum += array[i];
+  }
+
+  tempSum = maxSum;
+
+  // creating a sum where we don't have to re-add every number but to just subtract the 1st number and add the next to the sum we already have;
+  for (let i = n; i < array.length; i++) {
+    tempSum = tempSum - array[i - n] + array[i];
+
+    // Then just compare for max Sum vs tempSum
+    maxSum = Math.max(maxSum, tempSum);
+  }
+
+  return maxSum;
+}
+
+// Time Complexity = O(n);
+```
