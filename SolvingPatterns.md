@@ -15,7 +15,7 @@
 - Backtracking
 - **And Many More!**
 
-## Frequency Counters
+# Frequency Counters
 
 This pattern uses objects or sets to collect values/frequencies of values.
 This can often avoid the need for nested loops or **O(N^2)** operations with arrays/ strings.
@@ -122,3 +122,97 @@ function same(first, second) {
 ```
 
 Everytime we have multiple pieces of data and we have to compare them, it's good to use frequencyCounter Patterns.
+
+# Multiple Pointers
+
+Creating pointers or values that correspond to an index or position and move towards the beginning, end or middle based on a certain condition.
+
+Very efficient for solving problems with minimal space complexity as well.
+
+`Example: Write a function called **sumZero** which accepts a sorted array of integers. The function should find the **first** **pair** where the sum is 0. Return an array that includes both values that sum to zero or undefined if a pair does not exist.``
+
+```js
+Input: [-4, -3, -2, -1, 0, 1, 2, 5];
+
+Output: [-2, 2];
+
+//Naive Solution
+function sumZero(arr) {
+  for (let i = 0; i < arr.length; i++) {
+    for (let j = i + 1; j < arr.length; j++) {
+      if (arr[i] + arr[j] === 0) return [arr[i], arr[j]];
+    }
+  }
+}
+
+//Time Complexity = O(N^2) | Space Complexity = O(1);
+```
+
+## Refactored
+
+Starting this problem looking from both start and end:
+
+```js
+/*
+(left)           (right)
+[ 1,   2, 3, 4, 5,   6]
+*/
+
+function sumZero(arr) {
+  // Start pointers beginning and end
+  let left = 0,
+    right = arr.length - 1;
+
+  while (left < right) {
+    let sum = arr[left] + arr[right];
+
+    //if the sum of both integers is Zero, return both integers
+    if (sum === 0) {
+      return [arr[left], arr[right]];
+    } else if (sum > 0) {
+      // move right pointer one to the left
+      right--;
+    } else {
+      // move left pointer one to the right
+      left++;
+    }
+  }
+}
+
+// Time Complexity = O(n) || Space Complexity = O(1)
+```
+
+Now, let's do it starting both pointers on the left side of the array:
+
+`Example: Implement a function called **countUniqueValues**, which accepts a sorted array, and counts the unique values in the array. There can be negative numbers in the array, buit it will always be sorted.``
+
+```js
+Input: [1, 1, 1, 1, 1, 2];
+
+// 2
+
+/*
+(left)(right)
+[  1,    1,    1,    1,    1,    2]
+*/
+
+// If we are allow to mutate the array, this can be a solution
+// 2
+
+Output: function countUniqueValues(arr) {
+  let pointer1 = 0,
+    pointer2 = 1;
+
+  while (j !== arr.length) {
+    let currentVal = arr[pointer1],
+      nextVal = arr[pointer2];
+
+    if (currentVal === nextVal) pointer2++;
+    else {
+      pointer1++;
+      arr[pointer1] = arr[pointer2];
+    }
+  }
+  return pointer1 + 1;
+}
+```
