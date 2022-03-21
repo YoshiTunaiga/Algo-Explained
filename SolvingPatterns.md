@@ -197,9 +197,12 @@ Input: [1, 1, 1, 1, 1, 2];
 */
 
 // If we are allow to mutate the array, this can be a solution
+
 // 2
 
 Output: function countUniqueValues(arr) {
+  if (!arr.length) return 0;
+
   let pointer1 = 0,
     pointer2 = 1;
 
@@ -216,3 +219,26 @@ Output: function countUniqueValues(arr) {
   return pointer1 + 1;
 }
 ```
+
+```js
+// Refactored
+function countUniqueValues(arr) {
+
+  if(!arr.length) return 0;
+
+  let pointer1 = 0;
+
+  for (let pointer2 = 1; pointer2 < arr.{length; pointer2++) {
+    if(arr[pointer1] !== arr[pointer2]) {
+      pointer1++;
+      arr[pointer1] = arr[pointer2]
+    }
+  }
+
+  return pointer1 + 1;
+}
+
+// Time Complexity = We only looping once => O(n) || Space Complexity = O(1);
+```
+
+This type of pattern can be use in problems like Removing Duplicates from Sorted Array;
