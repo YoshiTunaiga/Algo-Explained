@@ -19,3 +19,90 @@
 
 This pattern uses objects or sets to collect values/frequencies of values.
 This can often avoid the need for nested loops or **O(N^2)** operations with arrays/ strings.
+
+`Example: Write a function called **Same**, which accepts two arrays. The function should return true if every value in the array has it's corresponding value squared in the second array. The frecuency of values must be the same.``
+
+```js
+Input: [1,2,3], [4,1,9];
+
+Output: //true;
+
+// Naive Solution
+function same(arr, sqarray){
+  // if they not the same length, return false.
+  if(arr.length !-- sqarray.length) return false;
+
+  for (let i =0; i < arr.length; i++) { // for loop
+
+    let correctIndex = sqarray.indexOf(arr[i] ** 2); // indexOf, which is itself looping
+
+    if(correctIndex === -1) return false;
+    // remove it from 2nd array if the element is there (this might affect/mutate the information pass to us as parameter)
+    sqarray.splice(correctIndex, 1);
+  }
+
+  return true;
+}
+
+
+// Time Complexity = N^2 (for loop + indexOf)
+```
+
+Now, to be able to refactor correctly, we can say that (2) separate for in loops is vastly better than (2) nested for loops.
+
+## Refactored
+
+```js
+Input: [1,2,2, 3], [4,1, 4,9];
+
+Output: //true;
+
+// Naive Solution
+function same(arr, sqarray){
+  // if they not the same length, return false.
+  if(arr.length !-- sqarray.length) return false;
+
+  let frequencyCounter1 = {}, frequencyCounter2 = {}; // counting frequency of individual values in the arrays.
+
+// This will be counting how many times the integer occurs in the array { 1: 1, 2: 2, 3: 1 }
+  for (let val of arr) {
+    frequencyCounter1[val] = (frequencyCounter1[val] || 0) + 1;
+  }
+
+  for (let val of sqarray) {
+    frequencyCounter2[val] = (frequencyCounter2[val] || 0) + 1;
+  }
+
+// This will check if
+  for (let key in frequencyCounter1) {
+    // if this key squared in the second array?
+    if(!(key ** 2 in frequencyCounter2)) return false;
+// Do they correspond?
+    if(frequencyCounter2[key **2] !== frequencyCounter1[key]) return false;
+  }
+  // else, return true.
+  return true;
+}
+
+
+// Time Complexity = O(3n) where we have (3)for in loops => O(n)
+
+```
+
+The idea behind frequency countert is to use an object or array for quickly checks during for in loops and for comparisons.
+
+Now let's use strings instead of arrays.
+`Given two strings s and t, return true if t is an anagram of s, and false otherwise.
+An Anagram is a word or phrase formed by rearranging the letters of a different word or phrase, typically using all the original letters exactly once.``
+
+```js
+function same(first, second){
+  // if they not the same length, return false.
+  if(first.length !-- second.length) return false;
+
+  const lookUp = {};
+
+
+  return true;
+}
+```

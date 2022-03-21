@@ -53,6 +53,62 @@ const isAnagram = function (string, text) {
 
 ## Solution #2
 
+LeetCode:
+
+```js
+var isAnagram = function (str1, str2) {
+  // is like looping to convert string to arrays (takes time)
+  str1 = str1.split("");
+  str2 = str2.split("");
+
+  // Edge: check if the both same length
+  if (str1.length !== str2.length) return false;
+
+  // Loop through either or strings
+  for (let i = 0; i < str1.length; i++) {
+    // get the index of the first character
+    let correctIndex = str2.indexOf(str1[i]);
+
+    // if the char is not in the other array, return false;
+    if (correctIndex === -1) return false;
+
+    // else, remove from the otherArray while mutating the information passed
+    str2.splice(correctIndex, 1);
+  }
+  // if everything was removed, return true;
+  return true;
+};
+```
+
+## Solution #3
+
+LeetCode:
+
+```js
+var isAnagram = function (str1, str2) {
+  // Edge: check if the both same length
+  if (str1.length !== str2.length) return false;
+
+  // Create empty counters for both strings
+  let frequencyCounter1 = {},
+    frequencyCounter2 = {};
+
+  for (let val in str1)
+    frequencyCounter1[str1[val]] = (frequencyCounter1[str1[val]] || 0) + 1;
+  for (let val in str2)
+    frequencyCounter2[str2[val]] = (frequencyCounter2[str2[val]] || 0) + 1;
+
+  for (let key in frequencyCounter1) {
+    if (!(key in frequencyCounter2)) return false;
+
+    if (frequencyCounter2[key] !== frequencyCounter1[key]) return false;
+  }
+  return true;
+};
+```
+
+## Solution #4
+
 HackerRank:
 
 ```js
