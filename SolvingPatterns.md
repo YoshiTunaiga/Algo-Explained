@@ -57,7 +57,6 @@ Input: [1,2,2, 3], [4,1, 4,9];
 
 Output: //true;
 
-// Naive Solution
 function same(arr, sqarray){
   // if they not the same length, return false.
   if(arr.length !-- sqarray.length) return false;
@@ -206,7 +205,7 @@ Output: function countUniqueValues(arr) {
   let pointer1 = 0,
     pointer2 = 1;
 
-  while (j !== arr.length) {
+  while (pointer2 !== arr.length) {
     let currentVal = arr[pointer1],
       nextVal = arr[pointer2];
 
@@ -223,15 +222,14 @@ Output: function countUniqueValues(arr) {
 ```js
 // Refactored
 function countUniqueValues(arr) {
-
-  if(!arr.length) return 0;
+  if (!arr.length) return 0;
 
   let pointer1 = 0;
 
-  for (let pointer2 = 1; pointer2 < arr.{length; pointer2++) {
-    if(arr[pointer1] !== arr[pointer2]) {
+  for (let pointer2 = 1; pointer2 < arr.length; pointer2++) {
+    if (arr[pointer1] !== arr[pointer2]) {
       pointer1++;
-      arr[pointer1] = arr[pointer2]
+      arr[pointer1] = arr[pointer2];
     }
   }
 
