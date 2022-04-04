@@ -40,3 +40,29 @@ const moveZeroes = function (nums) {
 Time Complexity is O(n)
 Space Complexity is O(1)
 ```
+
+## Solution #2
+
+```js
+const moveZeroes = function (nums) {
+  let idx = 0, jidx = 0; // Declare pointers to check against each other
+
+  while (jidx < nums.length) {
+    // If the rigth integer is not equal to (0) && the left integer IS EQUAL to (0)
+    if (nums[jidx] !== 0 && nums[idx] === 0) {
+      // Swap the integers, one for the other
+      let temp = nums[idx];
+      nums[idx] = nums[jidx];
+      nums[jidx] = temp;
+    }
+    jidx++;
+
+    if (nums[idx] !== 0) idx++;
+  }
+  return nums;
+};
+
+
+Time Complexity is O(n)
+Space Complexity is O(1)
+```
