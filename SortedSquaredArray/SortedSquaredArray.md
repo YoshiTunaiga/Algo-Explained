@@ -16,6 +16,8 @@ array = [1, 2, 3, 4, 6, 8, 9];
 
 ## Solition #1
 
+AlgoExpert
+
 ```javascript
 function sortedSquaredArray(array) {
   let result = []; // declaring a new empty array that will hold the result
@@ -41,4 +43,28 @@ function sortedSquaredArray(array) {
 
   return result;
 }
+```
+
+## Solution #2
+
+LeetCode:
+Given an integer array `nums` sorted in **`non-decreasing`** order, return an array of **`the squares of each number`** sorted in _non-decreasing order._
+
+**Input:** `nums = [-4, -1, 0, 3, 10]`;
+
+**Ouput:** `[0, 1, 9, 16, 100]`;
+
+**Explanation**: After squaring, the array becomes `[16, 1, 0, 9, 100]`;
+After sorting, it becomes `[0, 1, 9, 16, 100]`;
+
+```js
+const sortedSquares = (nums) => {
+  // Loop through the nums array
+  for (let idx in nums) {
+    // square each integer
+    nums[idx] = nums[idx] * nums[idx];
+  }
+  // return sorted nums array.
+  return nums.sort((a, b) => a - b);
+};
 ```

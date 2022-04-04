@@ -1,4 +1,4 @@
-array = [1, 2, 3, 4, 6, 8, 9];
+let array = [1, 2, 3, 4, 6, 8, 9];
 
 function sortedSquaredArray(array) {
   let result = []; // declaring a new empty array that will hold the result
@@ -23,3 +23,5 @@ function sortedSquaredArray(array) {
 
   return result;
 }
+
+sortedSquaredArray(array);
