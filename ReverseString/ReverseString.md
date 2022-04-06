@@ -46,3 +46,20 @@ function reverseWordsInString(string) {
   return string.join(" ");
 }
 ```
+
+## Solution #3
+
+LeetCode:
+
+```js
+const reverseString = (str) => {
+  let idx = 0,
+    jidx = str.length - 1;
+
+  while (idx < str.length / 2) {
+    // Swap in place using destructuring assignment;
+    [str[idx], str[jidx]] = [str[jidx], str[idx]];
+  }
+  return str;
+};
+```
