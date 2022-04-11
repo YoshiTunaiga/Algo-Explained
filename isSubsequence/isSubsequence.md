@@ -39,3 +39,18 @@ function isSubsequence(subStr, str) {
   return false;
 }
 ```
+
+## Solution #2
+
+MasterClass - Udemy
+
+```js
+function isSubsequence(subStr, str) {
+  if (subStr.length === 0) return true;
+  if (str.length === 0) return false;
+  if (str[0] === str1[0]) return isSubsequence(subStr.slice(1), str.slice(1));
+  return isSubsequence(subStr, str.slice(1));
+}
+
+RECURSIVE BUT NOT O(1) SPACE COMPLEXITY
+```
