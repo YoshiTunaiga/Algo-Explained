@@ -36,3 +36,33 @@ const containsDuplicate = function (nums) {
   return false;
 };
 ```
+
+## Solution #2
+
+MasterClass - Udemy
+
+```js
+function areThereDuplicates() {
+  let numbers = [...arguments].sort();
+
+  let left = 0;
+  let right = 1;
+
+  while (right <= numbers.length) {
+    if (numbers[left] === numbers[right]) return true;
+    left++;
+    right++;
+  }
+  return false;
+}
+```
+
+## Solution #3
+
+MasterClass - Udemy
+
+```js
+function areThereDuplicates() {
+  return new Set(arguments).size !== arguments.length;
+}
+```
