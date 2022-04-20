@@ -39,7 +39,7 @@ const containsDuplicate = function (nums) {
 
 ## Solution #2
 
-MasterClass - Udemy
+MasterClass - Udemy `Multiple Pointers`
 
 ```js
 function areThereDuplicates() {

@@ -22,7 +22,7 @@ Write a function called **isSubsequence** which takes in two strings and checks 
 
 ## Solution #1
 
-MasterClass - Udemy
+MasterClass - Udemy using `Multiple Pointers`
 
 ```js
 function isSubsequence(subStr, str) {

@@ -22,7 +22,7 @@ Write a function called **sameFrequency**. Given two positive integers, find out
 
 ## Solution #1
 
-MasterClass - udemy
+MasterClass - Udemy `Frequency Counter`
 
 ```js
 function sameFrequency(num1, num2) {

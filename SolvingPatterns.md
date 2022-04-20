@@ -23,27 +23,27 @@ This can often avoid the need for nested loops or **O(N^2)** operations with arr
 `Example: Write a function called **Same**, which accepts two arrays. The function should return true if every value in the array has it's corresponding value squared in the second array. The frecuency of values must be the same.``
 
 ```js
-Input: [1,2,3], [4,1,9];
+Input: [1, 2, 3], [4, 1, 9];
 
-Output: //true;
+//true;
 
 // Naive Solution
-function same(arr, sqarray){
+Output: function same(arr, sqarray) {
   // if they not the same length, return false.
-  if(arr.length !-- sqarray.length) return false;
+  if (arr.length !== sqarray.length) return false;
 
-  for (let i =0; i < arr.length; i++) { // for loop
+  for (let i = 0; i < arr.length; i++) {
+    // for loop
 
     let correctIndex = sqarray.indexOf(arr[i] ** 2); // indexOf, which is itself looping
 
-    if(correctIndex === -1) return false;
+    if (correctIndex === -1) return false;
     // remove it from 2nd array if the element is there (this might affect/mutate the information pass to us as parameter)
     sqarray.splice(correctIndex, 1);
   }
 
   return true;
 }
-
 
 // Time Complexity = N^2 (for loop + indexOf)
 ```
