@@ -54,3 +54,38 @@ const numUniqueEmails = function (emails) {
   return result.size;
 };
 ```
+
+## Solution #2
+
+```js
+const numUniqueEmails = function (emails) {
+  let result = new Set();
+
+  for (let email in emails) {
+    // O(n)
+    let currentEmail = emails[email],
+      jidx = 0,
+      localName = [],
+      gidx = currentEmail.length - 1,
+      domainName = [];
+
+    // Get the local name
+    while (currentEmail[jidx] !== "+" && currentEmail[jidx] !== "@") {
+      // O(n)
+      if (currentEmail[jidx] !== ".") localName.push(currentEmail[jidx]);
+      jidx++;
+    }
+
+    // Get the domain name
+    while (currentEmail[gidx] !== "@") {
+      // O(n)
+      domainName.unshift(currentEmail[gidx]);
+      gidx--;
+    }
+
+    domainName.unshift("@");
+    result.add(localName.concat(domainName).join(""));
+  }
+  return result.size;
+};
+```
