@@ -7,7 +7,7 @@
 5. 3Sum
 6. Remove Nth Node From End of List
 7. Valid Parentheses
-8. Merge Two Sorted Lists
+8. Merge Two Sorted Lists ✅
 9. Merge k Sorted Lists
 10. Search in Rotated Sorted Array
 11. Combination Sum
@@ -16,7 +16,7 @@
 14. Maximum Subarray
 15. Spiral Matrix
 16. Jump Game
-17. Merge Intervals
+17. Merge Intervals ✅
 18. Insert Interval
 19. Unique Paths
 20. Climbing Stairs
@@ -31,7 +31,7 @@
 29. Construct Binary Tree from Preorder and Inorder Traversal
 30. Best Time to Buy and Sell Stock
 31. Binary Tree Maximum Path Sum
-32. Valid Palindrome
+32. Valid Palindrome ✅
 33. Longest Consecutive Sequence
 34. Clone Graph
 35. Word Break
