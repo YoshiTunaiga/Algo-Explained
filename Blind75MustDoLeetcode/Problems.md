@@ -3,7 +3,7 @@
 1. Two Sum ✅
 2. Longest Substring Without Repeating Characters
 3. Longest Palindromic Substring
-4. Container With Most Water
+4. [Container With Most Water](https://github.com/YoshiTunaiga/Algo-Explained/blob/master/ContainerWithMostWater/ContainerWithMostWater.md) ✅
 5. 3Sum
 6. Remove Nth Node From End of List
 7. Valid Parentheses
@@ -78,5 +78,15 @@
 
 ## Extra
 
-76. Longest Common Subsequence
-77. Merge Strings Alternately ✅
+- [Merge Strings Alternately](https://github.com/YoshiTunaiga/Algo-Explained/blob/d1d1cf7a3d3e004da1ef544432efb44dfce17c0e/MergeStringsAlternately/MergeStringsAlternately.md) ✅
+- [Kids With The Greatest Number of Candies](https://github.com/YoshiTunaiga/Algo-Explained/blob/215d23a6c9f1619556b9ca1745e8a1deda4a591f/KidsWithTheGreatestNumberOfCandies/KidsWithTheGreatestNumberOfCandies.md) ✅
+- [Can Place Flowers](https://github.com/YoshiTunaiga/Algo-Explained/blob/065b313d4857836fbc77a974fc35526913639de2/CanPlaceFlowers/CanPlaceFlowers.md) ✅
+- [Reverse Vowels of a String](https://github.com/YoshiTunaiga/Algo-Explained/blob/04d22ee58af4284717837fcd1c9541fab2cc284f/ReverseVowelsOfAString/ReverseVowelsOfAString.md) ✅
+- [Reverse Words in a String](https://github.com/YoshiTunaiga/Algo-Explained/blob/d1d1cf7a3d3e004da1ef544432efb44dfce17c0e/ReverseWordsInAString/ReverseWordsInAString.md) ✅
+- [Product of Array Except Self](https://github.com/YoshiTunaiga/Algo-Explained/blob/215d23a6c9f1619556b9ca1745e8a1deda4a591f/ProductOfArrayExceptSelf/ProductOfArrayExceptSelf.md) ✅
+
+### Two Pointer
+
+- [Move Zeroes](https://github.com/YoshiTunaiga/Algo-Explained/blob/8070516081b116a40b0dd180ba8e0caf43fe81d0/MoveZeroes/MoveZeroes.md) ✅
+- [Max Number of K-Sum Pairs](https://github.com/YoshiTunaiga/Algo-Explained/blob/master/MaxNumberofKSumPairs/MaxNumberofKSumPairs.md) ✅
+- [Is Subsequence](https://github.com/YoshiTunaiga/Algo-Explained/blob/ad6e840ed727ba146d8748e3af42fb6c3b41a824/isSubsequence/isSubsequence.md) ✅

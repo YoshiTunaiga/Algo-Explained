@@ -54,3 +54,44 @@ function isSubsequence(subStr, str) {
 
 RECURSIVE BUT NOT O(1) SPACE COMPLEXITY
 ```
+
+## Solution Notes (Leetcode)
+
+```
+const isSubsequence = function(sub, text) {
+    /**
+    Input: two strings
+    Output: boolean
+    Variables:
+        isSubSeq (match string)
+        pointers (first and second)
+
+    Approach:
+        1. Two pointer while loop
+            a. Set up isSubseq empty string that should match the first param
+            b. Define a pointer for each parameter
+            c. Define one while loop that will iterate throught the second parameter
+                I. Assuming the second param could be larger than the first
+            d. Extract each char of the second param on each iteration
+                I. Compare
+
+
+     */
+
+    let isSubSeq = "";
+    let firstPoint = 0;
+    let secondPoint = 0;
+
+    while(firstPoint < text.length) {
+        let char = text[firstPoint];
+
+        if(char === sub[secondPoint]) {
+            isSubSeq+= char;
+            secondPoint++;
+        }
+        firstPoint++;
+    }
+
+    return isSubSeq === sub;
+};
+```

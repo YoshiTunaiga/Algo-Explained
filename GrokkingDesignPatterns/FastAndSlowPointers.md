@@ -39,7 +39,6 @@ Check whether or not a linked list contains a cycle. If a cycle exists, return T
 const detectCycle = (head) => {
   let slowPoint = head;
   let fastPoint = head;
-  console.log(slowPoint.data, fastPoint.data);
 
   while (fastPoint.data && fastPoint.next) {
     slowPoint = slowPoint.next;

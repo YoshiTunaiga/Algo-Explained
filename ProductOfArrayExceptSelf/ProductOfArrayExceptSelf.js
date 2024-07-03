@@ -1,4 +1,4 @@
-const productExceptSelf = function (nums) {
+const productExceptSelf = (nums) => {
   let resultArray = [];
   let prodL = 1;
   let prodR = 1;

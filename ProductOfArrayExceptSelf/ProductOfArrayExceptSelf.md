@@ -16,7 +16,7 @@ Output: [24,12,8,6]
 ## Solution One:
 
 ```js
-const productExceptSelf = function (nums) {
+const productExceptSelf = (nums) => {
   let resultArray = [];
   let prodL = 1;
   let prodR = 1;
@@ -38,7 +38,7 @@ const productExceptSelf = function (nums) {
 ## Solution Notes:
 
 ```
-const productExceptSelf = function(nums) {
+const productExceptSelf = (nums)  =>{
     /**
         Input: array of integers
         Output: array of integers
