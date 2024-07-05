@@ -14,7 +14,6 @@ const compress = (chars) => {
 
   const handleString = (str) => {
     let start = str[0];
-    let strLength = "";
 
     if (str.length > 9) {
       resStr += start + str.length.toString().split("").join("");
@@ -27,7 +26,7 @@ const compress = (chars) => {
 
   for (let idx = 0; idx < chars.length; idx++) {
     let char = chars[idx];
-    console.log(char, idx, chars.length - 1);
+
     if (prevChar === char && idx === chars.length - 1) {
       str += char;
       handleString(str);
