@@ -70,7 +70,18 @@ const longestOnes = function(nums, k) {
 
     Edge Cases:
         - nums.length one
-        -
+
+    Original array => [1,1,0,1]
+    -> Sliding window from the start
+    array, start, end, maxCount
+    [ 1 ] 0 1 1
+    [ 1, 1 ] 0 2 2
+    [ 1, 1, 0 ] 0 3 3
+    [ 1, 1, 0, 1 ] 0 4 3
+
+    -> - <- Sliding window from both ends
+    [ 1,1 ] 0 4
+    [ 1, 1, 0, 1 ] 1 3
      */
 
     let startP = 0;
