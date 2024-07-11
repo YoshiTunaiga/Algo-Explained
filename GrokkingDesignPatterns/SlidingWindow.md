@@ -126,7 +126,7 @@ function findMaxSlidingWindow(nums, w) {
   let start = 0;
   let array = nums.slice(start, w);
   tempMax = Math.max(...array);
-  console.log(array, "temp:", tempMax, start, w);
+  // console.log(array, "temp:", tempMax, start, w);
   maxValue.push(tempMax);
 
   for (let end = w - 1; end < nums.length; end++) {
@@ -267,6 +267,7 @@ function minWindow(str1, str2) {
   let minLen = Infinity;
 
   while (start < str1.length) {
+    //Iterates through each character in str1 to find potential starting points that match the first character of str2.
     if (str1[start] === str2[0]) {
       let idx = start,
         jdx = 0;
@@ -280,6 +281,7 @@ function minWindow(str1, str2) {
         let end = idx;
         let windowStr = str1.slice(start, end);
         if (windowStr.length < minLen) {
+          // Keeps track of the smallest window found so far by comparing lengths.
           foundStr = windowStr;
           minLen = windowStr.length;
         }
@@ -287,36 +289,40 @@ function minWindow(str1, str2) {
     }
     start++;
   }
-  // while(start < str1.length) {
-  //     // console.log(str1[start])
-  //     // console.log(foundIdx, start)
-  //     if(str1[start] === str2[str2.length - 1]) {
-  //         foundIdx.push(start);
-  //         start++;
-  //     } else {
-  //         start++;
-  //     }
-  // }
 
-  // while(foundIdx.length) {
-  //     // console.log(foundIdx, start)
-  //     let end = foundIdx.shift();
-  //     let startP = 0;
-  //     while(startP < end) {
-  //         if(str1[startP] === str2[0]) {
-  //             console.log(str1.slice(startP, end + 1))
-  //             currentStr = str1.slice(startP, end + 1)
-  //             break;
-  //         }
-  //         startP++;
-  //     }
-  //     if(currentStr.length < foundStr.length) {
-  //         foundStr = currentStr;
-  //     }
+  /*
+  while(start < str1.length) {
+      console.log(str1[start])
+      console.log(foundIdx, start)
+      if(str1[start] === str2[str2.length - 1]) {
+          foundIdx.push(start);
+          start++;
+      } else {
+          start++;
+      }
+  }
 
-  //     currentStr = "";
-  // }
+  while(foundIdx.length) {
+      console.log(foundIdx, start)
+      let end = foundIdx.shift();
+      let startP = 0;
+      while(startP < end) {
+          if(str1[startP] === str2[0]) {
+              console.log(str1.slice(startP, end + 1))
+              currentStr = str1.slice(startP, end + 1)
+              break;
+          }
+          startP++;
+      }
+      if(currentStr.length < foundStr.length) {
+          foundStr = currentStr;
+      }
 
+      currentStr = "";
+  }
+  */
+
+  // Returns the smallest window that contains str2 in order.
   return foundStr;
 }
 ```
