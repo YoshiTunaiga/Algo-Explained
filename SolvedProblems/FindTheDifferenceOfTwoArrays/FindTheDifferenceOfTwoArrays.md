@@ -44,3 +44,70 @@ const findDifference = (array1, array2) => {
 };
 // Runtime: 127ms
 ```
+
+## Solution #2
+
+```js
+const findDifference = (nums1, nums2) => {
+  const memo1 = [];
+  const memo2 = [];
+
+  for (let idx = 0; idx < nums1.length; idx++) {
+    if (!nums2.includes(nums1[idx]) && !memo1.includes(nums1[idx]))
+      memo1.push(nums1[idx]);
+  }
+
+  for (let idx = 0; idx < nums2.length; idx++) {
+    if (!nums1.includes(nums2[idx]) && !memo2.includes(nums2[idx]))
+      memo2.push(nums2[idx]);
+  }
+
+  return [memo1, memo2];
+};
+// Runtime: 126ms
+```
+
+### Notes
+
+```js
+const findDifference = (nums1, nums2) => {
+  /**
+        Input: arrays of integers
+        Ouput: Arrays of arrays with integers
+        Variables:
+            - temp arrays
+
+        Approach:
+            - Hash Maps / set
+            - Memo
+            - Arrays
+
+
+     */
+
+  const memo1 = [];
+  const memo2 = [];
+
+  //  const memo1 = {};
+  //  const memo2 = {};
+  //  const length = nums1.length > nums2.length ? nums1.length : nums2.length;
+
+  //  for(let idx = 0; idx < length; idx++) {
+  //     if(nums1.length && !nums2.includes(nums1[idx]) && !memo1[nums1[idx]] && nums1[idx]) memo1[nums1[idx]] = nums1[idx];
+
+  //     if(nums2.length && !nums1.includes(nums2[idx]) && !memo2[nums2[idx]] && nums2[idx]) memo2[nums2[idx]] = nums2[idx];
+  //  }
+
+  for (let idx = 0; idx < nums1.length; idx++) {
+    if (!nums2.includes(nums1[idx]) && !memo1.includes(nums1[idx]))
+      memo1.push(nums1[idx]);
+  }
+
+  for (let idx = 0; idx < nums2.length; idx++) {
+    if (!nums1.includes(nums2[idx]) && !memo2.includes(nums2[idx]))
+      memo2.push(nums2[idx]);
+  }
+  //  return [Object.values(memo1), Object.values(memo2)]
+  return [memo1, memo2];
+};
+```
