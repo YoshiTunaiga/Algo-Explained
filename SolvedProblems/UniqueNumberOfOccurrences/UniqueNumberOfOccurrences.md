@@ -55,3 +55,41 @@ const uniqueOccurrences = (arr) => {
   return bool;
 };
 ```
+
+## Solution 2
+
+```js
+var uniqueOccurrences = function (arr) {
+  /*
+        Input: array of integers
+        Output: boolean
+        Variable: 
+            - uniqueMap
+            - bool
+
+        Approach: 
+            - create a map from each int count
+            - loop through the map values
+            
+     */
+
+  const uniqueMap = new Map();
+  let bool = true;
+
+  arr.forEach((int) =>
+    uniqueMap.set(int, uniqueMap.get(int) ? uniqueMap.get(int) + 1 : 1)
+  );
+
+  const occurMap = new Map();
+
+  uniqueMap.forEach((value, key, map) => {
+    if (occurMap.has(value)) {
+      bool = false;
+    } else {
+      occurMap.set(value, key);
+    }
+  });
+
+  return bool;
+};
+```
