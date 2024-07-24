@@ -371,3 +371,56 @@ function minWindow(str1, str2) {
   return minSubsequence;
 }
 ```
+
+## Summary for Longest Repeating Character Replacement
+
+Given a string s and an integer k, find the length of the longest substring in s, where all characters are identical, after replacing, at most, k characters with any other lowercase English character.
+
+## Solution & Notes
+
+```js
+function longestRepeatingCharacterReplacement(chars, k) {
+  let startP = 0;
+  let charCount = {}; // dictionary
+  let maxCount = 0; // max count of chars
+  let maxString = 0; // longest string of chars
+
+  for (let endP = 0; endP < chars.length; endP++) {
+    // add each char to the dict and its count
+    if (!charCount[chars[endP]]) {
+      charCount[chars[endP]] = 1;
+    } else {
+      charCount[chars[endP]]++;
+    }
+
+    // check if the current char count is max than current maxCount
+    maxCount = Math.max(maxCount, charCount[chars[endP]]);
+
+    // if the window size minus the maxCount of chars is greater than k
+    if (endP - startP + 1 - maxCount > k) {
+      charCount[chars[startP]]--; // reduce 1 from the current char
+      startP++; // move the window start point forward
+    }
+
+    // check if the current window size is greater than the current max of string
+    maxString = Math.max(endP - startP + 1, maxString);
+  }
+
+  return maxString;
+}
+
+export { longestRepeatingCharacterReplacement };
+```
+
+### Grokking Solution
+
+To recap, the solution can be divided into the following parts:
+
+We iterate over the input string using two pointers.
+
+In each iteration:
+
+If the new character is not present in the hash map, we add it. Otherwise, we increment its frequency by 1.
+We slide the window one step forward if the number of replacements required in the current window has exceeded our limit.
+If the current window is the longest so far, then we update the length of the longest substring that has the same character.
+Finally, we return the length of the longest substring with the same character after replacements.
