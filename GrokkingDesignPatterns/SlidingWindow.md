@@ -424,3 +424,96 @@ If the new character is not present in the hash map, we add it. Otherwise, we in
 We slide the window one step forward if the number of replacements required in the current window has exceeded our limit.
 If the current window is the longest so far, then we update the length of the longest substring that has the same character.
 Finally, we return the length of the longest substring with the same character after replacements.
+
+## Summary for Minimum Window Substring
+
+Given two strings, `s` and `t`, find the minimum window substring in `s`, which has the following properties:
+
+- It is the shortest substring of `s` that includes all of the characters present in `t`.
+
+- It must contain at least the same frequency of each character as in `t`.
+
+- The order of the characters does not matter here.
+
+### Solution & notes
+
+```js
+function minWindow(str, trs) {
+  let result = "";
+  if (!trs.length) return result;
+
+  let charFreq = {};
+  let windowSize = {};
+
+  // get the letters
+  for (let idx = 0; idx < trs.length; idx++) {
+    const char = trs.charAt(idx);
+    charFreq[char] = 1 + (charFreq[char] || 0);
+  }
+
+  // star a counter for each char
+  for (let idx = 0; idx < trs.length; idx++) {
+    let char = trs.charAt(idx);
+    windowSize[char] = 0;
+  }
+
+  let current = 0;
+  // define a required amount of char
+  const required = Object.keys(charFreq).length;
+
+  let res = [-1, -1];
+  let resLen = Infinity;
+
+  // loop thru the string
+  let start = 0;
+  for (let end = 0; end < str.length; end++) {
+    const curChar = str.charAt(end);
+
+    if (trs.indexOf(curChar) != -1) {
+      windowSize[curChar] = 1 + (windowSize[curChar] || 0);
+    }
+
+    if (charFreq[curChar] && windowSize[curChar] === charFreq[curChar]) {
+      current++;
+    }
+
+    while (current === required) {
+      if (end - start + 1 < resLen) {
+        res = [start, end];
+        resLen = end - start + 1;
+      }
+
+      const leftChar = str.charAt(start);
+      if (trs.indexOf(leftChar) !== -1) {
+        windowSize[leftChar] -= 1;
+      }
+      if (charFreq[leftChar] && windowSize[leftChar] < charFreq[leftChar]) {
+        current -= 1;
+      }
+      start++;
+    }
+  }
+
+  const [startIdx, endIdx] = res;
+
+  return resLen !== Infinity ? str.slice(startIdx, endIdx + 1) : "";
+}
+```
+
+### Solution Summary
+
+```
+We validate the inputs. If t is an empty string, we return an empty string.
+
+Next, we initialize two hash maps: reqCount, to save the frequency of characters in t, and window, to keep track of the frequency of characters of t in the current window. We also initialize a variable, required, to hold the number of unique characters in t. Lastly, we initialize current which keeps track of the characters that occur in t whose frequency in the current window is equal to or greater than their corresponding frequency in t.
+
+Then, we iterate over s and in each iteration we perform the following steps:
+
+  - If the current character occurs in t, we update its frequency in the window hash map.
+
+  - If the frequency of the new character is equal to its frequency in reqCount, we increment current.
+
+  - If current is equal to required, we decrease the size of the window from the start. As long as current and required are equal, we decrease the window size one character at a time, while also updating the minimum window substring. Once current falls below required, we slide the right edge of the window forward and move on to the next iteration.
+
+Finally, when s has been traversed completely, we return the minimum window substring.
+```
