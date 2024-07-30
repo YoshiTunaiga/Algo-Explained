@@ -435,6 +435,20 @@ Given two strings, `s` and `t`, find the minimum window substring in `s`, which 
 
 - The order of the characters does not matter here.
 
+We validate the inputs. If t is an empty string, we return an empty string.
+
+Next, we initialize two hash maps: reqCount, to save the frequency of characters in t, and window, to keep track of the frequency of characters of t in the current window. We also initialize a variable, required, to hold the number of unique characters in t. Lastly, we initialize current which keeps track of the characters that occur in t whose frequency in the current window is equal to or greater than their corresponding frequency in t.
+
+Then, we iterate over s and in each iteration we perform the following steps:
+
+- If the current character occurs in t, we update its frequency in the window hash map.
+
+- If the frequency of the new character is equal to its frequency in reqCount, we increment current.
+
+- If current is equal to required, we decrease the size of the window from the start. As long as current and required are equal, we decrease the window size one character at a time, while also updating the minimum window substring. Once current falls below required, we slide the right edge of the window forward and move on to the next iteration.
+
+Finally, when s has been traversed completely, we return the minimum window substring.
+
 ### Solution & notes
 
 ```js
@@ -500,20 +514,80 @@ function minWindow(str, trs) {
 }
 ```
 
-### Solution Summary
+## Summary for Implement Queue Using Stacks
 
+Design a custom queue, MyQueue, using only two stacks. Implement the Push(), Pop(), Peek(), and Empty() methods:
+
+- Void Push(int x): Pushes element to the back of the queue.
+- Int Pop(): Removes and returns the element from the front of the queue.
+- Int Peek(): Returns the element at the front of the queue.
+- Boolean Empty(): Returns TRUE if the queue is empty. Otherwise FALSE.
+
+You are required to only use the standard stack operations, which means that only the Push() to top, Peek() and Pop() from the top, Size(), and Is Empty() operations are valid.
+
+A queue is a first in, first out (FIFO) data structure, while a stack is a last in, first out (LIFO) data structure. We will use two stacks, stack1 and stack2, to preserve the FIFO property of a queue.
+
+Push(): Whenever a new element is to be pushed, we will pop all elements from stack1 and push into stack2 so that the latest element is pushed to the bottom of stack1. We will then pop the elements from stack2 and push back into stack1, preserving the FIFO order.
+
+Pop(): Since the order of insertion was preserved during Push(), we will simply Pop() from the top of stack1.
+
+Empty(): Since stack1 contains all the elements, its size is checked to see if the queue is empty.
+
+### Solution & Notes
+
+```js
+class MyQueue {
+  constructor() {
+    this.stack = [];
+  }
+
+  push(x) {
+    this.stack.push(x);
+  }
+
+  pop() {
+    return this.stack.shift();
+  }
+
+  peek() {
+    return this.stack[0];
+  }
+
+  empty() {
+    return !this.stack.length;
+  }
+}
+
+export { MyQueue };
 ```
-We validate the inputs. If t is an empty string, we return an empty string.
 
-Next, we initialize two hash maps: reqCount, to save the frequency of characters in t, and window, to keep track of the frequency of characters of t in the current window. We also initialize a variable, required, to hold the number of unique characters in t. Lastly, we initialize current which keeps track of the characters that occur in t whose frequency in the current window is equal to or greater than their corresponding frequency in t.
+## Summary for Valid Parentheses
 
-Then, we iterate over s and in each iteration we perform the following steps:
+Given a string that may consist of opening and closing parentheses, your task is to check whether or not the string contains valid parenthesization.
 
-  - If the current character occurs in t, we update its frequency in the window hash map.
+The conditions to validate are as follows:
 
-  - If the frequency of the new character is equal to its frequency in reqCount, we increment current.
+Every opening parenthesis should be closed by the same kind of parenthesis. Therefore, `{)` and `[(])` strings are invalid.
 
-  - If current is equal to required, we decrease the size of the window from the start. As long as current and required are equal, we decrease the window size one character at a time, while also updating the minimum window substring. Once current falls below required, we slide the right edge of the window forward and move on to the next iteration.
+Every opening parenthesis must be closed in the correct order. Therefore, )( and `()(()` are invalid.
 
-Finally, when s has been traversed completely, we return the minimum window substring.
+## Solution & Notes
+
+```js
+function isValid(str) {
+  let stringMemo = { "(": ")", "[": "]", "{": "}" };
+  let stack = [];
+
+  for (let idx = 0; idx < str.length; idx++) {
+    let char = str[idx];
+
+    if (stringMemo[char]) {
+      stack.push(char);
+    } else if (stack.length === 0 || stringMemo[stack.pop() !== char]) {
+      return false;
+    }
+  }
+
+  return stack.length === 0;
+}
 ```
