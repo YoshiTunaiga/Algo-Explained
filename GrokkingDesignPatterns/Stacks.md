@@ -170,3 +170,72 @@ Create an empty stack to store characters.
 Iterate over the input string and push the character onto the stack if the stack is either empty or the stack’s top element is different from the string’s character.
 If they both are the same, pop an element from the stack.
 After the entire string has been traversed, the remaining characters in the stack represent the input string without adjacent duplicates.
+
+## Summary of Flatten Nested List Iterator
+
+You’re given a nested list of integers. Each element is either an integer or a list whose elements may also be integers or other integer lists. Your task is to implement an iterator to flatten the nested list.
+
+You will have to implement the Nested Iterator class. This class has the following functions:
+
+Constructor: This initializes the iterator with the nested list.
+Next (): This returns the next integer in the nested list.
+Has Next (): This returns TRUE if there are still some integers in the nested list. Otherwise, it returns FALSE.
+
+### MY SOLUTION
+
+```js
+export var NestedIterator = function (nestedList) {
+  this.stack = [...nestedList.reverse()];
+  // console.log(this.nestedList)
+};
+
+// hasNext checks if there is an element in a nested_list
+NestedIterator.prototype.hasNext = function () {
+  // if(this.stack.length === 0) return false;
+  // if(this.stack[this.stack.length - 1].isInteger()) return true
+  while (this.stack.length) {
+    return true;
+  }
+  return false;
+};
+
+// next will return the integer from the nestedList
+NestedIterator.prototype.next = function () {
+  if (this.hasNext()) {
+    let popped = this.stack.pop();
+    return popped.getInteger();
+  }
+};
+```
+
+### GROKKING SOLUTION
+
+```js
+var NestedIterator = function (nestedList) {
+  this.stack = [...nestedList.reverse()];
+};
+
+// hasNext() will return true if there are still some integers in the
+// stack (that has nestedList elements) and, otherwise, will return false.
+NestedIterator.prototype.hasNext = function () {
+  while (this.stack.length > 0) {
+    let top = this.stack[this.stack.length - 1];
+
+    if (top.isInteger()) return true;
+
+    let topList = this.stack.pop().getList();
+    let i = topList.length - 1;
+    while (i >= 0) {
+      this.stack.push(topList[i]);
+      i -= 1;
+    }
+  }
+  return false;
+};
+
+// next will return the integer from the nestedList
+NestedIterator.prototype.next = function () {
+  if (this.hasNext()) return this.stack.pop().getInteger();
+  return null;
+};
+```
