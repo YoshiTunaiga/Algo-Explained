@@ -62,3 +62,31 @@ const mergeAlternately = (word1, word2) => {
   return result;
 };
 ```
+
+## Solution 3
+
+```js
+const mergeAlternately = (word1, word2) => {
+  let idx = 0;
+  let jdx = 0;
+
+  let mergedString = "";
+  let length = word1.length > word2.length ? word1.length : word2.length;
+
+  while (length) {
+    if (idx < word1.length) {
+      mergedString += word1[idx];
+      idx++;
+    }
+
+    if (jdx < word2.length) {
+      mergedString += word2[jdx];
+      jdx++;
+    }
+
+    length--;
+  }
+
+  return mergedString;
+};
+```
